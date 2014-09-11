@@ -1,0 +1,46 @@
+<script>
+$(window).load(function(){
+  $('#slider').ramblingSlider();
+});
+</script>
+<h1>Listing products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Catogery</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.catogery %></td>
+        <td><%= product.price %></td>
+        <td><%= product.description %></td>
+        <td><%= link_to 'checkout', product.paypal_url(products_url) %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>
+<div id="slider">
+  <%= image_tag("3.jpg", :alt => "3.jpg") %>
+  <%= image_tag("4.jpg", :alt => "4.jpg") %>
+  <%= image_tag("5.jpg", :alt => "5.jpg") %>
+  
+</div>
